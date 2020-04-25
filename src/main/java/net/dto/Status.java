@@ -1,16 +1,15 @@
 package net.dto;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Getter;
 import lombok.Setter;
-import net.jackson.deserializer.StatusDeserializer;
 
 /**
  * Status.
  *
  * @version 0.1
  */
-@JsonDeserialize(using = StatusDeserializer.class)
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Status extends Resource {
   @Getter @Setter private String name;
   @Getter @Setter private String description;
