@@ -1,19 +1,18 @@
 package net.service.impl;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.Unirest;
 import com.mashape.unirest.http.exceptions.UnirestException;
 import lombok.NonNull;
-import org.apache.http.HttpHeaders;
-import org.apache.http.HttpStatus;
 import net.credentials.Credentials;
 import net.dto.Version;
 import net.dto.response.Versions;
 import net.service.ServiceException;
 import net.service.VersionService;
+import net.util.Mapper;
+import org.apache.http.HttpHeaders;
+import org.apache.http.HttpStatus;
 
 import java.util.List;
 
@@ -21,11 +20,8 @@ public class VersionServiceImpl extends VersionService {
   private static final String URL_PATTERN = "%s/rest/api/2/version/%s";
   private static final String LIST_URL_PATTERN = "%s/rest/api/2/project/%s/version?startAt=%d&maxResults=%d";
 
-  private final ObjectMapper mapper;
-
   public VersionServiceImpl(String baseUrl, Credentials credentials) {
     super(baseUrl, credentials);
-    mapper = new ObjectMapper().registerModule(new JavaTimeModule());
   }
 
   @Override
@@ -36,7 +32,7 @@ public class VersionServiceImpl extends VersionService {
 
       int status = response.getStatus();
       switch (status) {
-        case HttpStatus.SC_OK: return mapper.readValue(response.getBody(), Version.class);
+        case HttpStatus.SC_OK: return Mapper.get().readValue(response.getBody(), Version.class);
         case HttpStatus.SC_NOT_FOUND: return null;
         default: {
           String message = String.format("Failed to get version (%s), status code: %d", id, status);
@@ -56,7 +52,7 @@ public class VersionServiceImpl extends VersionService {
 
       int status = response.getStatus();
       if (status == HttpStatus.SC_OK) {
-        Versions versions = mapper.readValue(response.getBody(), Versions.class);
+        Versions versions = Mapper.get().readValue(response.getBody(), Versions.class);
         return versions.getValues();
       }
 

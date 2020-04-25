@@ -2,10 +2,9 @@ package net.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import lombok.Getter;
 import lombok.Setter;
+import net.util.Mapper;
 
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
@@ -20,8 +19,6 @@ import java.util.stream.Collectors;
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Issue extends Resource {
-  private static final ObjectMapper mapper = new ObjectMapper().registerModule(new JavaTimeModule());
-
   @Getter @Setter private String key;
   @Getter @Setter private String summary;
   @Getter @Setter private String description;
@@ -40,20 +37,21 @@ public class Issue extends Resource {
   @Getter @Setter private List<String> subtaskIds;
 
   @JsonProperty("fields")
+  @SuppressWarnings("unchecked")
   private void deserializeFields(Map<String, Object> fields) {
     summary = (String) fields.get("summary");
     description = (String) fields.get("description");
-    reporter = mapper.convertValue(fields.get("reporter"), User.class);
-    assignee = mapper.convertValue(fields.get("assignee"), User.class);
+    reporter = Mapper.get().convertValue(fields.get("reporter"), User.class);
+    assignee = Mapper.get().convertValue(fields.get("assignee"), User.class);
     created = getZonedDateTime((String) fields.get("created"));
     updated = getZonedDateTime((String) fields.get("updated"));
     dueDate = getZonedDateTime((String) fields.get("duedate"));
     resolutionDate = getZonedDateTime((String) fields.get("resolutiondate"));
-    timeTracking = mapper.convertValue(fields.get("timetracking"), TimeTracking.class);
-    issueType = mapper.convertValue(fields.get("issuetype"), IssueType.class);
-    status = mapper.convertValue(fields.get("status"), Status.class);
-    priority = mapper.convertValue(fields.get("priority"), Priority.class);
-    resolution = mapper.convertValue(fields.get("resolution"), Resolution.class);
+    timeTracking = Mapper.get().convertValue(fields.get("timetracking"), TimeTracking.class);
+    issueType = Mapper.get().convertValue(fields.get("issuetype"), IssueType.class);
+    status = Mapper.get().convertValue(fields.get("status"), Status.class);
+    priority = Mapper.get().convertValue(fields.get("priority"), Priority.class);
+    resolution = Mapper.get().convertValue(fields.get("resolution"), Resolution.class);
 
     if (fields.containsKey("parent")) {
       parentId = (String) ((Map<String, Object>) fields.get("parent")).get("id");

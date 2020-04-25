@@ -1,18 +1,18 @@
 package net.service.impl;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.Unirest;
 import com.mashape.unirest.http.exceptions.UnirestException;
 import lombok.NonNull;
-import org.apache.http.HttpHeaders;
-import org.apache.http.HttpStatus;
 import net.credentials.Credentials;
 import net.dto.Issue;
 import net.dto.response.Issues;
 import net.service.IssueService;
 import net.service.ServiceException;
+import net.util.Mapper;
+import org.apache.http.HttpHeaders;
+import org.apache.http.HttpStatus;
 
 import java.util.List;
 
@@ -20,11 +20,8 @@ public class IssueServiceImpl extends IssueService {
   private static final String URL_PATTERN = "%s/rest/api/2/issue/%s?fields=summary,description,reporter,assignee,created,updated,duedate,resolutiondate,timetracking,issuetype,status,priority,resolution,parent,subtasks";
   private static final String LIST_URL_PATTERN = "%s/rest/api/2/search?startAt=%d&maxResults=%d&fields=summary,description,reporter,assignee,created,updated,duedate,resolutiondate,timetracking,issuetype,status,priority,resolution,parent,subtasks";
 
-  private final ObjectMapper mapper;
-
   public IssueServiceImpl(String baseUrl, Credentials credentials) {
     super(baseUrl, credentials);
-    mapper = new ObjectMapper();
   }
 
   @Override
@@ -35,7 +32,7 @@ public class IssueServiceImpl extends IssueService {
 
       int status = response.getStatus();
       switch (status) {
-        case HttpStatus.SC_OK: return mapper.readValue(response.getBody(), Issue.class);
+        case HttpStatus.SC_OK: return Mapper.get().readValue(response.getBody(), Issue.class);
         case HttpStatus.SC_NOT_FOUND: return null;
       }
 
@@ -54,7 +51,7 @@ public class IssueServiceImpl extends IssueService {
 
       int status = response.getStatus();
       if (status == HttpStatus.SC_OK) {
-        Issues issues = mapper.readValue(response.getBody(), Issues.class);
+        Issues issues = Mapper.get().readValue(response.getBody(), Issues.class);
         return issues.getIssues();
       }
 

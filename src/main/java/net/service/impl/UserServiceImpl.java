@@ -1,26 +1,23 @@
 package net.service.impl;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.Unirest;
 import com.mashape.unirest.http.exceptions.UnirestException;
 import lombok.NonNull;
-import org.apache.http.HttpHeaders;
-import org.apache.http.HttpStatus;
 import net.credentials.Credentials;
 import net.dto.User;
 import net.service.ServiceException;
 import net.service.UserService;
+import net.util.Mapper;
+import org.apache.http.HttpHeaders;
+import org.apache.http.HttpStatus;
 
 public class UserServiceImpl extends UserService {
   private static final String URL_PATTERN = "%s/rest/api/2/user?accountId=%s";
 
-  private final ObjectMapper mapper;
-
   public UserServiceImpl(String baseUrl, Credentials credentials) {
     super(baseUrl, credentials);
-    mapper = new ObjectMapper();
   }
 
   @Override
@@ -31,7 +28,7 @@ public class UserServiceImpl extends UserService {
 
       int status = response.getStatus();
       switch (status) {
-        case HttpStatus.SC_OK: return mapper.readValue(response.getBody(), User.class);
+        case HttpStatus.SC_OK: return Mapper.get().readValue(response.getBody(), User.class);
         case HttpStatus.SC_NOT_FOUND: return null;
         default: {
           String message = String.format("Failed to get user (%s), status code: %d", id, status);
