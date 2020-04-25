@@ -1,16 +1,15 @@
 package net.dto;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Getter;
 import lombok.Setter;
-import net.jackson.deserializer.ProjectDeserializer;
 
 /**
  * Project.
  *
  * @version 0.1
  */
-@JsonDeserialize(using = ProjectDeserializer.class)
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Project extends Resource {
   @Getter @Setter private String key;
   @Getter @Setter private String name;
