@@ -6,11 +6,9 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import lombok.Getter;
 import lombok.Setter;
-import lombok.ToString;
 
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -20,7 +18,6 @@ import java.util.stream.Collectors;
  *
  * @version 0.1
  */
-@ToString(callSuper = true)
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Issue extends Resource {
   private static final ObjectMapper mapper = new ObjectMapper().registerModule(new JavaTimeModule());
