@@ -1,9 +1,9 @@
 package net.dto;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Getter;
 import lombok.Setter;
-import net.jackson.deserializer.VersionDeserializer;
 
 import java.time.LocalDate;
 
@@ -12,13 +12,13 @@ import java.time.LocalDate;
  *
  * @version 0.1
  */
-@JsonDeserialize(using = VersionDeserializer.class)
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Version extends Resource {
   @Getter @Setter private String name;
   @Getter @Setter private Boolean archived;
   @Getter @Setter private Boolean released;
-  @Getter @Setter private LocalDate startDate;
-  @Getter @Setter private LocalDate releaseDate;
-  @Getter @Setter private LocalDate userStartDate;
-  @Getter @Setter private LocalDate userReleaseDate;
+  @Getter @Setter @JsonFormat(pattern = "yyyy-MM-dd") private LocalDate startDate;
+  @Getter @Setter @JsonFormat(pattern = "yyyy-MM-dd") private LocalDate releaseDate;
+  @Getter @Setter @JsonFormat(pattern = "dd/LLL/yy", locale = "en_US") private LocalDate userStartDate;
+  @Getter @Setter @JsonFormat(pattern = "dd/LLL/yy", locale = "en_US") private LocalDate userReleaseDate;
 }

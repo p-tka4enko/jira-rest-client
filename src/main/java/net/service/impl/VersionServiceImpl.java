@@ -2,6 +2,7 @@ package net.service.impl;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.Unirest;
 import com.mashape.unirest.http.exceptions.UnirestException;
@@ -24,7 +25,7 @@ public class VersionServiceImpl extends VersionService {
 
   public VersionServiceImpl(String baseUrl, Credentials credentials) {
     super(baseUrl, credentials);
-    mapper = new ObjectMapper();
+    mapper = new ObjectMapper().registerModule(new JavaTimeModule());
   }
 
   @Override
