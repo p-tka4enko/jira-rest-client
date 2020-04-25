@@ -1,16 +1,15 @@
 package net.dto;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Getter;
 import lombok.Setter;
-import net.jackson.deserializer.TimeTrackingDeserializer;
 
 /**
  * Issue time tracking data.
  *
  * @version 0.1
  */
-@JsonDeserialize(using = TimeTrackingDeserializer.class)
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class TimeTracking {
   @Getter @Setter private String originalEstimate;
   @Getter @Setter private String remainingEstimate;
