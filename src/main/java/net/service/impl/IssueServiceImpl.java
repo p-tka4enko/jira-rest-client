@@ -17,8 +17,8 @@ import org.apache.http.HttpStatus;
 import java.util.List;
 
 public class IssueServiceImpl extends IssueService {
-  private static final String URL_PATTERN = "%s/rest/api/2/issue/%s?fields=summary,description,reporter,assignee,created,updated,duedate,resolutiondate,timetracking,issuetype,status,priority,resolution,parent,subtasks";
-  private static final String LIST_URL_PATTERN = "%s/rest/api/2/search?startAt=%d&maxResults=%d&fields=summary,description,reporter,assignee,created,updated,duedate,resolutiondate,timetracking,issuetype,status,priority,resolution,parent,subtasks";
+  private static final String URL_PATTERN = "%s/rest/api/2/issue/%s?fields=summary,description,reporter,assignee,created,updated,duedate,resolutiondate,timetracking,issuetype,status,priority,resolution,parent,subtasks,issuelinks,attachment";
+  private static final String LIST_URL_PATTERN = "%s/rest/api/2/search?startAt=%d&maxResults=%d&fields=summary,description,reporter,assignee,created,updated,duedate,resolutiondate,timetracking,issuetype,status,priority,resolution,parent,subtasks,issuelinks,attachment";
 
   public IssueServiceImpl(String baseUrl, Credentials credentials) {
     super(baseUrl, credentials);

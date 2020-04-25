@@ -2,8 +2,10 @@ package net.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.core.type.TypeReference;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 import net.util.Mapper;
 
 import java.time.ZonedDateTime;
@@ -17,6 +19,7 @@ import java.util.stream.Collectors;
  *
  * @version 0.1
  */
+@ToString
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Issue extends Resource {
   @Getter @Setter private String key;
@@ -33,6 +36,8 @@ public class Issue extends Resource {
   @Getter @Setter private Status status;
   @Getter @Setter private Priority priority;
   @Getter @Setter private Resolution resolution;
+  @Getter @Setter private List<IssueLink> issueLinks;
+  @Getter @Setter private List<Attachment> attachments;
   @Getter @Setter private String parentId;
   @Getter @Setter private List<String> subtaskIds;
 
@@ -52,6 +57,8 @@ public class Issue extends Resource {
     status = Mapper.get().convertValue(fields.get("status"), Status.class);
     priority = Mapper.get().convertValue(fields.get("priority"), Priority.class);
     resolution = Mapper.get().convertValue(fields.get("resolution"), Resolution.class);
+    issueLinks = Mapper.get().convertValue(fields.get("issuelinks"), new TypeReference<List<IssueLink>>() {});
+    attachments = Mapper.get().convertValue(fields.get("attachment"), new TypeReference<List<Attachment>>() {});
 
     if (fields.containsKey("parent")) {
       parentId = (String) ((Map<String, Object>) fields.get("parent")).get("id");
