@@ -5,7 +5,7 @@ import org.apache.commons.lang3.StringUtils;
 import net.credentials.Credentials;
 
 /**
- * Base abstract net.service class.
+ * Base abstract service class.
  *
  * @version 0.1
  */
