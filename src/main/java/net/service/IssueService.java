@@ -7,7 +7,7 @@ import net.dto.Issue;
 import java.util.List;
 
 /**
- * Abstract issue net.service.
+ * Abstract issue service.
  *
  * @version 0.1
  */

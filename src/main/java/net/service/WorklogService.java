@@ -7,7 +7,7 @@ import net.dto.Worklog;
 import java.util.List;
 
 /**
- * Abstract worklog net.service.
+ * Abstract worklog service.
  *
  * @version 0.1
  */

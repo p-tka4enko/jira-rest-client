@@ -4,8 +4,10 @@ import lombok.NonNull;
 import net.credentials.Credentials;
 import net.dto.User;
 
+import java.util.List;
+
 /**
- * Abstract user net.service.
+ * Abstract user service.
  *
  * @version 0.1
  */
@@ -22,4 +24,14 @@ public abstract class UserService extends Service {
    * @throws ServiceException in case of any problems
    */
   public abstract User getUser(@NonNull String id) throws ServiceException;
+
+  /**
+   * Returns list of users.
+   *
+   * @param startAt index of the first item to return in a page of results (page offset)
+   * @param maxResults maximum number of items to return per page
+   * @return list of users
+   * @throws ServiceException in case of any problems
+   */
+  public abstract List<User> getUsers(long startAt, int maxResults) throws ServiceException;
 }

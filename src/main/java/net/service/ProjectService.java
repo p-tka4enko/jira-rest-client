@@ -7,7 +7,7 @@ import net.dto.Project;
 import java.util.List;
 
 /**
- * Abstract project net.service.
+ * Abstract project service.
  *
  * @version 0.1
  */

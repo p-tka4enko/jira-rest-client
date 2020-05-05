@@ -7,7 +7,7 @@ import net.dto.Version;
 import java.util.List;
 
 /**
- * Abstract version net.service.
+ * Abstract version service.
  *
  * @version 0.1
  */
