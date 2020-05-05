@@ -1,13 +1,14 @@
 package net.service.impl;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.JsonNode;
 import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.Unirest;
 import com.mashape.unirest.http.exceptions.UnirestException;
 import lombok.NonNull;
 import net.credentials.Credentials;
 import net.dto.Worklog;
-import net.dto.response.Worklogs;
 import net.service.ServiceException;
 import net.service.WorklogService;
 import net.util.Mapper;
@@ -52,8 +53,8 @@ public class WorklogServiceImpl extends WorklogService {
 
       int status = response.getStatus();
       if (status == HttpStatus.SC_OK) {
-        Worklogs worklogs = Mapper.get().readValue(response.getBody(), Worklogs.class);
-        return worklogs.getWorklogs();
+        JsonNode worklogs = Mapper.get().readTree(response.getBody()).get("worklogs");
+        return Mapper.get().convertValue(worklogs, new TypeReference<List<Worklog>>() {});
       }
 
       String message = String.format("Failed to get worklog list, status code: %d", status);

@@ -1,13 +1,14 @@
 package net.service.impl;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.JsonNode;
 import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.Unirest;
 import com.mashape.unirest.http.exceptions.UnirestException;
 import lombok.NonNull;
 import net.credentials.Credentials;
 import net.dto.Project;
-import net.dto.response.Projects;
 import net.service.ProjectService;
 import net.service.ServiceException;
 import net.util.Mapper;
@@ -51,8 +52,8 @@ public class ProjectServiceImpl extends ProjectService {
 
       int status = response.getStatus();
       if (status == HttpStatus.SC_OK) {
-        Projects projects = Mapper.get().readValue(response.getBody(), Projects.class);
-        return projects.getValues();
+        JsonNode projects = Mapper.get().readTree(response.getBody()).get("values");
+        return Mapper.get().convertValue(projects, new TypeReference<List<Project>>() {});
       }
 
       String message = String.format("Failed to get project list, status code: %d", status);

@@ -1,13 +1,14 @@
 package net.service.impl;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.JsonNode;
 import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.Unirest;
 import com.mashape.unirest.http.exceptions.UnirestException;
 import lombok.NonNull;
 import net.credentials.Credentials;
 import net.dto.Version;
-import net.dto.response.Versions;
 import net.service.ServiceException;
 import net.service.VersionService;
 import net.util.Mapper;
@@ -52,8 +53,8 @@ public class VersionServiceImpl extends VersionService {
 
       int status = response.getStatus();
       if (status == HttpStatus.SC_OK) {
-        Versions versions = Mapper.get().readValue(response.getBody(), Versions.class);
-        return versions.getValues();
+        JsonNode versions = Mapper.get().readTree(response.getBody()).get("values");
+        return Mapper.get().convertValue(versions, new TypeReference<List<Version>>() {});
       }
 
       String message = String.format("Failed to get version list, status code: %d", status);

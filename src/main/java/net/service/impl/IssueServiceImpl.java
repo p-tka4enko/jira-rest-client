@@ -1,13 +1,14 @@
 package net.service.impl;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.JsonNode;
 import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.Unirest;
 import com.mashape.unirest.http.exceptions.UnirestException;
 import lombok.NonNull;
 import net.credentials.Credentials;
 import net.dto.Issue;
-import net.dto.response.Issues;
 import net.service.IssueService;
 import net.service.ServiceException;
 import net.util.Mapper;
@@ -51,8 +52,8 @@ public class IssueServiceImpl extends IssueService {
 
       int status = response.getStatus();
       if (status == HttpStatus.SC_OK) {
-        Issues issues = Mapper.get().readValue(response.getBody(), Issues.class);
-        return issues.getIssues();
+        JsonNode issues = Mapper.get().readTree(response.getBody()).get("issues");
+        return Mapper.get().convertValue(issues, new TypeReference<List<Issue>>() {});
       }
 
       String message = String.format("Failed to get issue list, status code: %d", status);
