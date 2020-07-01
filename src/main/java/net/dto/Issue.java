@@ -2,8 +2,7 @@ package net.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 import net.util.Mapper;
 
 import java.time.ZonedDateTime;
@@ -17,24 +16,25 @@ import java.util.stream.Collectors;
  *
  * @version 0.1
  */
+@Data
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Issue extends Resource {
-  @Getter @Setter private String key;
-  @Getter @Setter private String summary;
-  @Getter @Setter private String description;
-  @Getter @Setter private User reporter;
-  @Getter @Setter private User assignee;
-  @Getter @Setter private ZonedDateTime created;
-  @Getter @Setter private ZonedDateTime updated;
-  @Getter @Setter private ZonedDateTime dueDate;
-  @Getter @Setter private ZonedDateTime resolutionDate;
-  @Getter @Setter private TimeTracking timeTracking;
-  @Getter @Setter private IssueType issueType;
-  @Getter @Setter private Status status;
-  @Getter @Setter private Priority priority;
-  @Getter @Setter private Resolution resolution;
-  @Getter @Setter private String parentId;
-  @Getter @Setter private List<String> subtaskIds;
+  private String key;
+  private String summary;
+  private String description;
+  private User reporter;
+  private User assignee;
+  private ZonedDateTime created;
+  private ZonedDateTime updated;
+  private ZonedDateTime dueDate;
+  private ZonedDateTime resolutionDate;
+  private TimeTracking timeTracking;
+  private IssueType issueType;
+  private Status status;
+  private Priority priority;
+  private Resolution resolution;
+  private String parentId;
+  private List<String> subtaskIds;
 
   @JsonProperty("fields")
   @SuppressWarnings("unchecked")

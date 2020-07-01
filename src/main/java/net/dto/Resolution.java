@@ -1,16 +1,16 @@
 package net.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 
 /**
  * Resolution.
  *
  * @version 0.1
  */
+@Data
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Resolution extends Resource {
-  @Getter @Setter private String name;
-  @Getter @Setter private String description;
+  private String name;
+  private String description;
 }

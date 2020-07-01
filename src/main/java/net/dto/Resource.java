@@ -1,16 +1,16 @@
 package net.dto;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 
 /**
  * Base abstract resource class.
  *
  * @version 0.1
  */
+@Data
 public abstract class Resource {
-  @Getter @Setter protected String self;
-  @Getter @Setter protected String id;
+  protected String self;
+  protected String id;
 
   @Override
   public String toString() {

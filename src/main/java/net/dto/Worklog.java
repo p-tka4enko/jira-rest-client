@@ -2,8 +2,7 @@ package net.dto;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 
 import java.time.ZonedDateTime;
 
@@ -12,12 +11,13 @@ import java.time.ZonedDateTime;
  *
  * @version 0.1
  */
+@Data
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Worklog extends Resource {
-  @Getter @Setter User author;
-  @Getter @Setter User updateAuthor;
-  @Getter @Setter Integer timeSpentSeconds;
-  @Getter @Setter @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSZ") ZonedDateTime created;
-  @Getter @Setter @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSZ") ZonedDateTime updated;
-  @Getter @Setter @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSZ") ZonedDateTime started;
+  private User author;
+  private User updateAuthor;
+  private Integer timeSpentSeconds;
+  @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSZ") private ZonedDateTime created;
+  @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSZ") private ZonedDateTime updated;
+  @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSZ") private ZonedDateTime started;
 }
