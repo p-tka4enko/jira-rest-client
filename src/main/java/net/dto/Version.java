@@ -6,11 +6,6 @@ import lombok.Data;
 
 import java.time.LocalDate;
 
-/**
- * Version.
- *
- * @version 0.1
- */
 @Data
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Version extends Resource {

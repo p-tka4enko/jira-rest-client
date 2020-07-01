@@ -6,11 +6,6 @@ import lombok.Data;
 
 import java.util.Map;
 
-/**
- * User.
- *
- * @version 0.1
- */
 @Data
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class User extends Resource {

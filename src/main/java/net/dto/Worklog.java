@@ -6,11 +6,6 @@ import lombok.Data;
 
 import java.time.ZonedDateTime;
 
-/**
- * Worklog.
- *
- * @version 0.1
- */
 @Data
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Worklog extends Resource {

@@ -11,11 +11,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-/**
- * Issue.
- *
- * @version 0.1
- */
 @Data
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Issue extends Resource {
