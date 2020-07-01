@@ -10,12 +10,13 @@ import net.service.impl.*;
  *
  * @version 0.1
  */
+@Getter
 public class RestClient {
-  @Getter private UserService userService;
-  @Getter private ProjectService projectService;
-  @Getter private VersionService versionService;
-  @Getter private IssueService issueService;
-  @Getter private WorklogService worklogService;
+  private UserService userService;
+  private ProjectService projectService;
+  private VersionService versionService;
+  private IssueService issueService;
+  private WorklogService worklogService;
 
   public RestClient(String baseUrl, Credentials credentials) {
     this.userService = new UserServiceImpl(baseUrl, credentials);
