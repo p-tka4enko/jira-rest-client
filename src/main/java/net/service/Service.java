@@ -4,11 +4,6 @@ import lombok.NonNull;
 import org.apache.commons.lang3.StringUtils;
 import net.credentials.Credentials;
 
-/**
- * Base abstract service class.
- *
- * @version 0.1
- */
 public abstract class Service {
   protected String baseUrl;
   protected Credentials credentials;

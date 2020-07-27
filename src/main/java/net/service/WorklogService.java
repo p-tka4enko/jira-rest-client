@@ -6,11 +6,6 @@ import net.dto.Worklog;
 
 import java.util.List;
 
-/**
- * Abstract worklog service.
- *
- * @version 0.1
- */
 public abstract class WorklogService extends Service {
   public WorklogService(String baseUrl, Credentials credentials) {
     super(baseUrl, credentials);

@@ -6,11 +6,6 @@ import net.dto.Project;
 
 import java.util.List;
 
-/**
- * Abstract project service.
- *
- * @version 0.1
- */
 public abstract class ProjectService extends Service {
   public ProjectService(String baseUrl, Credentials credentials) {
     super(baseUrl, credentials);

@@ -6,11 +6,6 @@ import net.dto.Version;
 
 import java.util.List;
 
-/**
- * Abstract version service.
- *
- * @version 0.1
- */
 public abstract class VersionService extends Service {
   public VersionService(String baseUrl, Credentials credentials) {
     super(baseUrl, credentials);

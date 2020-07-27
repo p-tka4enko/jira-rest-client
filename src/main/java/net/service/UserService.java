@@ -6,11 +6,6 @@ import net.dto.User;
 
 import java.util.List;
 
-/**
- * Abstract user service.
- *
- * @version 0.1
- */
 public abstract class UserService extends Service {
   public UserService(String baseUrl, Credentials credentials) {
     super(baseUrl, credentials);

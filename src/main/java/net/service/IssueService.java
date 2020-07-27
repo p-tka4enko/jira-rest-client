@@ -6,11 +6,6 @@ import net.dto.Issue;
 
 import java.util.List;
 
-/**
- * Abstract issue service.
- *
- * @version 0.1
- */
 public abstract class IssueService extends Service {
   public IssueService(String baseUrl, Credentials credentials) {
     super(baseUrl, credentials);
