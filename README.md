@@ -12,7 +12,7 @@ Atlassian's JIRA REST API implementation for Java.
 
 ## Quick start example ##
 ```java
-import net.RestClient;
+import net.JiraRestClient;
 import net.credentials.Credentials;
 import net.credentials.impl.BasicCredentials;
 import net.dto.Issue;
@@ -23,7 +23,7 @@ public class Example {
     // Create JIRA REST client
     String baseUrl = "https://your-domain.net";
     Credentials credentials = new BasicCredentials("login", "tokenOrPassword");
-    RestClient rest = new RestClient(baseUrl, credentials);
+    JiraRestClient rest = new JiraRestClient(baseUrl, credentials);
 
     try {
       // Retrieve issue with key "ISSUE-1" from JIRA
