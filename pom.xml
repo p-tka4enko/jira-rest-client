@@ -4,12 +4,12 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>net</groupId>
-    <artifactId>jira-rest-client</artifactId>
+    <groupId>ru.citeck.ecos</groupId>
+    <artifactId>ecos-jira-rest-client</artifactId>
     <version>1.0.0-SNAPSHOT</version>
     <packaging>jar</packaging>
 
-    <name>jira-rest-client</name>
+    <name>ECOS JIRA REST Client</name>
     <description>Atlassian's JIRA REST API implementation for Java</description>
 
     <properties>

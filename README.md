@@ -1,22 +1,22 @@
-# jira-rest-client #
+# ecos-jira-rest-client #
 Atlassian's JIRA REST API implementation for Java.
 
 ## Maven dependency ##
 ```xml
 <dependency>
-    <groupId>net</groupId>
-    <artifactId>jira-rest-client</artifactId>
-    <version>0.1</version>
+    <groupId>ru.citeck.ecos</groupId>
+    <artifactId>ecos-jira-rest-client</artifactId>
+    <version>1.0.0</version>
 </dependency>
 ```
 
 ## Quick start example ##
 ```java
-import net.JiraRestClient;
-import net.credentials.Credentials;
-import net.credentials.impl.BasicCredentials;
-import net.domain.Issue;
-import net.service.ServiceException;
+import ru.citeck.ecos.JiraRestClient;
+import ru.citeck.ecos.credentials.Credentials;
+import ru.citeck.ecos.credentials.impl.BasicCredentials;
+import ru.citeck.ecos.domain.Issue;
+import ru.citeck.ecos.service.ServiceException;
 
 public class Example {
   public static void main(String[] args) {
