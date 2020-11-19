@@ -2,7 +2,7 @@ package net.service;
 
 import lombok.NonNull;
 import net.credentials.Credentials;
-import net.dto.Project;
+import net.domain.Project;
 
 import java.util.List;
 

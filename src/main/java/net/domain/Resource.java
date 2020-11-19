@@ -1,4 +1,4 @@
-package net.dto;
+package net.domain;
 
 import lombok.Data;
 

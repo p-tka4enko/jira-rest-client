@@ -15,7 +15,7 @@ Atlassian's JIRA REST API implementation for Java.
 import net.JiraRestClient;
 import net.credentials.Credentials;
 import net.credentials.impl.BasicCredentials;
-import net.dto.Issue;
+import net.domain.Issue;
 import net.service.ServiceException;
 
 public class Example {

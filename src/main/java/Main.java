@@ -1,7 +1,7 @@
 import net.JiraRestClient;
 import net.credentials.Credentials;
 import net.credentials.impl.BasicCredentials;
-import net.dto.Issue;
+import net.domain.Issue;
 import net.service.ServiceException;
 
 public class Main {

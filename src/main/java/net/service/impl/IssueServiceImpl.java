@@ -8,7 +8,7 @@ import com.mashape.unirest.http.Unirest;
 import com.mashape.unirest.http.exceptions.UnirestException;
 import lombok.NonNull;
 import net.credentials.Credentials;
-import net.dto.Issue;
+import net.domain.Issue;
 import net.service.IssueService;
 import net.service.ServiceException;
 import net.util.Mapper;
