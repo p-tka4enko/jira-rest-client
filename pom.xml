@@ -22,7 +22,7 @@
         <unirest.version>1.4.9</unirest.version>
         <lombok.version>1.18.12</lombok.version>
         <commons-lang3.version>3.10</commons-lang3.version>
-        <jackson.version>2.10.3</jackson.version>
+        <jackson.version>2.10.5.1</jackson.version>
         <jackson.jsr310>2.10.3</jackson.jsr310>
     </properties>
 
